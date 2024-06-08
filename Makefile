@@ -9,8 +9,6 @@ SRC_DIR = src/
 OBJ_DIR = .obj/
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-MLX_MAC_FLAGS = -l mlx -framework OpenGL -framework AppKit
-MLX_LINUX_FLAGS = -lmlx_Linux -lXext -lX11
 AR = ar
 ARFLAGS = rcs
 RM = rm -rf
@@ -40,7 +38,7 @@ $(NAME): $(OBJ_DIR) $(OBJS)
 	@echo $(B) "--> Into $(LIBFT_DIR)" $(X)
 	@$(MAKE) -C $(LIBFT_DIR)
 	@echo $(B) "*** $(NAME) creating ***" $(X)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_DIR)$(LIBFT_NAME) $(MLX_MAC_FLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_DIR)$(LIBFT_NAME) -o $(NAME)
 	@echo "\n"
 	@echo $(G) "!!!!!!! $(NAME) created success !!!!!!!" $(X)
 
@@ -49,7 +47,7 @@ $(NAME_LINUX): $(OBJ_DIR) $(OBJS)
 	@echo $(B) "--> Into $(LIBFT_DIR)" $(X)
 	@$(MAKE) -C $(LIBFT_DIR)
 	@echo $(B) "*** $(NAME_LINUX) creating ***" $(X)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_DIR)$(LIBFT_NAME) $(MLX_LINUX_FLAGS) -o $(NAME_LINUX)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_DIR)$(LIBFT_NAME) -o $(NAME_LINUX)
 	@echo "\n"
 	@echo $(G) "!!!!!!! $(NAME_LINUX) created success !!!!!!!" $(X)
 

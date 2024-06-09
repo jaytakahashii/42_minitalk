@@ -130,13 +130,13 @@ $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)$(FTPRINTF_DIR)
 
 clean:
-	@echo $(R) "cleaning \n" $(X)
-	${RM} ${OBJ_DIR}
+	@${RM} ${OBJ_DIR}
+	@echo $(R) "$(NAME) cleaned\n" $(X)
 
 fclean:
-	@echo $(R) "fcleaning \n" $(X)
 	@${RM} ${OBJ_DIR}
 	@${RM} ${NAME}
+	@echo $(R) "$(NAME) fcleaned\n" $(X)
 
 re: fclean all
 

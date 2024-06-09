@@ -46,13 +46,13 @@ $(SERVER): $(OBJ_DIR) $(SERVER_OBJS)
 	@echo $(B) "--> Into $(LIBFT_DIR)" $(X)
 	@$(MAKE) -C $(LIBFT_DIR)
 	@echo $(B) "<-- Out of $(LIBFT_DIR)\n" $(X)
-	@echo $(B) "$(SERVER) creating\n" $(X)
-	$(CC) $(CFLAGS) $(SERVER_OBJS) $(LIBFT_DIR)$(LIBFT_NAME) -o $(SERVER)
+	@echo $(B) "$(SERVER) creating" $(X)
+	@$(CC) $(CFLAGS) $(SERVER_OBJS) $(LIBFT_DIR)$(LIBFT_NAME) -o $(SERVER)
 	@echo $(G) "!! $(SERVER) created !!" $(X)
 
 $(CLIENT): $(OBJ_DIR) $(CLIENT_OBJS)
 	@echo $(B) "$(CLIENT) creating\n" $(X)
-	@$(CC) $(CFLAGS) $(CLIENT_OBJS) $(LIBFT_DIR)$(LIBFT_NAME) -o $(CLIENT)
+	$(CC) $(CFLAGS) $(CLIENT_OBJS) $(LIBFT_DIR)$(LIBFT_NAME) -o $(CLIENT)
 	@echo $(G) "!! $(SERVER) created !!" $(X)
 
 $(OBJ_DIR):
@@ -82,4 +82,5 @@ norm:
 	@norminette $(SRC_DIR) $(INCLUDE_DIR) | grep Error || true
 	@$(MAKE) -C $(LIBFT_DIR) norm
 
-.PHONY: all clean fclean re norm linux relinux
+.PHONY: all clean fclean re norm
+# .PHONY: all clean fclean re norm linux relinux

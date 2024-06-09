@@ -5,17 +5,46 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/09 19:49:53 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/09 19:58:22 by jtakahas         ###   ########.fr       */
+/*   Created: 2024/06/09 15:22:14 by jtakahas          #+#    #+#             */
+/*   Updated: 2024/06/09 21:35:30 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include <stdio.h>
+#include <signal.h> /* signal.hをインクルード */
+#include <stdlib.h>
+#include <string.h>
 
-int	main(int ac, char **av)
+int count;
+
+void signal_handler(int signum)
 {
-	if (ac != 1)
-		error_handler("Invalid arguments", "Usage: ./server");
-	(void)av;
-	return (0);
+    /* シグナルハンドラ内で安全ではない関数を使っていない */
+    count += 100;
+	(void)signum;
+}
+
+int main(void){
+
+    struct sigaction sa;
+    /* シグナルマスクのクリア(エラーチェック付き) */
+    if (-1 == sigemptyset(&sa.sa_mask))
+	{
+        exit(1);
+    }
+    sa.sa_handler = signal_handler;
+    sa.sa_flags = 0;
+
+    /* シグナルハンドラの登録(エラーチェック付き) */
+    if(-1 == sigaction(SIGINT, &sa, NULL)){
+        exit(1);
+    }
+
+    /* 変数countが50以下の間ループ */
+    while(count < 50){
+    }
+
+    puts("Count Over.");
+
+    return 0;
 }

@@ -6,11 +6,14 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:22:55 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/09 15:23:11 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/09 16:36:30 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
 # define MINITALK_H
+
+# include <signal.h>
+# include <unistd.h>
 
 #endif

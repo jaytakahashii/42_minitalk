@@ -1,3 +1,4 @@
+NAME = minitalk
 SERVER = server
 CLIENT = client
 LIBFT_NAME = libft
@@ -41,17 +42,17 @@ CUT 		= "\033[K"
 all: $(SERVER) $(CLIENT)
 
 $(SERVER): $(OBJ_DIR) $(SERVER_OBJS)
-	@echo $(Y) "successfully compiled\n" $(X)
+	@echo $(Y) "$(NAME) successfully compiled\n" $(X)
 	@echo $(B) "--> Into $(LIBFT_DIR)" $(X)
 	@$(MAKE) -C $(LIBFT_DIR)
-	@echo $(B) "<-- Out of $(LIBFT_DIR)" $(X)
+	@echo $(B) "<-- Out of $(LIBFT_DIR)\n" $(X)
 	@echo $(B) "$(SERVER) creating\n" $(X)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_DIR)$(LIBFT_NAME) -o $(SERVER)
+	$(CC) $(CFLAGS) $(SERVER_OBJS) $(LIBFT_DIR)$(LIBFT_NAME) -o $(SERVER)
 	@echo $(G) "!! $(SERVER) created !!" $(X)
 
 $(CLIENT): $(OBJ_DIR) $(CLIENT_OBJS)
 	@echo $(B) "$(CLIENT) creating\n" $(X)
-	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_DIR)$(LIBFT_NAME) -o $(CLIENT)
+	@$(CC) $(CFLAGS) $(CLIENT_OBJS) $(LIBFT_DIR)$(LIBFT_NAME) -o $(CLIENT)
 	@echo $(G) "!! $(SERVER) created !!" $(X)
 
 $(OBJ_DIR):
@@ -65,13 +66,13 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
 	@$(RM) $(OBJ_DIR)
-	@echo $(R) "$(NAME) cleaned" $(X)
+	@echo $(R) "$(NAME) cleaned\n" $(X)
 
 fclean:
 	@$(MAKE) -C $(LIBFT_DIR) fclean
 	@$(RM) $(OBJ_DIR)
 	@$(RM) $(NAME) $(NAME_LINUX)
-	@echo $(R) "$(NAME) fcleaned" $(X)
+	@echo $(R) "$(NAME) fcleaned\n" $(X)
 
 re: fclean all
 

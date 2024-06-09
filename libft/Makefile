@@ -106,7 +106,7 @@ CUT 		= "\033[K"
 all: ${NAME}
 
 ${NAME}: $(OBJ_DIR) ${OBJS}
-	@echo $(Y) "successfully compiled\n" $(X)
+	@echo $(Y) "$(NAME) successfully compiled\n" $(X)
 	@echo $(B) "$(NAME) archiving\n" $(X)
 	@$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 	@echo $(G) "!! $(NAME) created !!" $(X)

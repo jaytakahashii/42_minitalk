@@ -6,13 +6,11 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:22:14 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 15:05:40 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 15:11:24 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-#include <stdio.h>
 
 void	signal_handler(int signal)
 {

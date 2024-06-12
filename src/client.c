@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 19:49:01 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 15:07:56 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 18:16:40 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	send_message(int pid, char c)
 			if (kill(pid, SIGUSR2) == -1)
 				error_handler("Kill error", "SIGUSR2");
 		}
-		usleep(10);
+		usleep(50);
 		bit++;
 	}
 }

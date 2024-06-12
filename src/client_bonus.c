@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 19:49:01 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 19:22:09 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 19:28:56 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,12 @@ int	main(int ac, char **av)
 		error_handler("Invalid PID", "PID must be a positive integer");
 	sa.sa_handler = signal_handler;
 	sigemptyset(&sa.sa_mask);
-	sigaddset(&sa.sa_mask, SIGUSR1);
-	sigaddset(&sa.sa_mask, SIGUSR2);
-	sigaction(SIGUSR1, &sa, NULL);
-	sigaction(SIGUSR2, &sa, NULL);
+	if (sigaddset(&sa.sa_mask, SIGUSR1) == -1
+		|| sigaddset(&sa.sa_mask, SIGUSR2) == -1)
+		error_handler("Sigaddset error", NULL);
+	if (sigaction(SIGUSR1, &sa, NULL) == -1
+		|| sigaction(SIGUSR2, &sa, NULL) == -1)
+		error_handler("Sigaction error", NULL);
 	sa.sa_flags = 0;
 	index = 0;
 	while (av[2][index])

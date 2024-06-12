@@ -6,15 +6,13 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:22:14 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 14:07:34 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:14:02 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
 #include <stdio.h>
-
-int	count;
 
 void	signal_handler(int signal)
 {
@@ -34,22 +32,19 @@ void	signal_handler(int signal)
 
 int	main(int ac, char **av)
 {
-		struct	sigaction sa;
-		int			pid;
+	struct sigaction	sa;
 
-		if (ac != 1)
-				error_handler("Invalid arguments", "Usage: ./server");
-		// get pid (always successful)
-		pid = getpid();
-		ft_printf("Server PID: %d\n", pid);
-		sa.sa_handler = signal_handler;
-		sa.sa_flags = 0;
-		while(1)
-		{
-				sigaction(SIGUSR1, &sa, NULL);
-				sigaction(SIGUSR2, &sa, NULL);
-				pause();
-		}
-		(void)av;
-		return (0);
+	if (ac != 1)
+		error_handler("Invalid arguments", "Usage: ./server");
+	ft_printf("Server PID: %d\n", getpid());
+	sa.sa_handler = signal_handler;
+	sa.sa_flags = 0;
+	while (1)
+	{
+		sigaction(SIGUSR1, &sa, NULL);
+		sigaction(SIGUSR2, &sa, NULL);
+		pause();
+	}
+	(void)av;
+	return (0);
 }

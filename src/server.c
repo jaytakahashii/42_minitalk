@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:22:14 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 14:15:44 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 15:05:40 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	signal_handler(int signal)
 	bit++;
 	if (bit == 8)
 	{
-		ft_printf("%c", c);
+		write(1, &c, 1);
 		bit = 0;
 		c = 0;
 	}
@@ -34,10 +34,16 @@ int	main(int ac, char **av)
 {
 	struct sigaction	sa;
 
+	(void)av;
 	if (ac != 1)
 		error_handler("Invalid arguments", "Usage: ./server");
 	ft_printf("Server PID: %d\n", getpid());
 	sa.sa_handler = signal_handler;
+	sigemptyset(&sa.sa_mask);
+	if (sigaddset(&sa.sa_mask, SIGUSR1) == -1)
+		error_handler("Sigaddset error", "SIGUSR1");
+	if (sigaddset(&sa.sa_mask, SIGUSR2) == -1)
+		error_handler("Sigaddset error", "SIGUSR2");
 	sa.sa_flags = 0;
 	if (sigaction(SIGUSR1, &sa, NULL) == -1)
 		error_handler("Sigaction error", "SIGUSR1");
@@ -45,6 +51,5 @@ int	main(int ac, char **av)
 		error_handler("Sigaction error", "SIGUSR2");
 	while (1)
 		pause();
-	(void)av;
 	return (0);
 }

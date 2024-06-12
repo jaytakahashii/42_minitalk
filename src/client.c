@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 19:49:01 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 12:22:08 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:07:04 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	send_message(int pid, char c)
 	bit = 0;
 	while (bit < 8)
 	{
-		if ((c & (0x01 << bit)) != 0)
+		if ((c & (1 << bit)) != 0)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);

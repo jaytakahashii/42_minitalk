@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:22:14 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 12:23:05 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:07:34 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	signal_handler(int signal)
 	static int	c;
 
 	if (signal == SIGUSR1)
-		c |= (0x01 << bit);
+		c |= (1 << bit);
 	bit++;
 	if (bit == 8)
 	{

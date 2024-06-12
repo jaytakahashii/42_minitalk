@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:22:14 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 19:05:01 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 19:14:42 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int	main(int ac, char **av)
 	if (sigaddset(&sa.sa_mask, SIGUSR2) == -1)
 		error_handler("Sigaddset error", "SIGUSR2");
 	sa.sa_flags = 0;
-	if (sigaction(SIGUSR1, &sa, NULL) == -1 || sigaction(SIGUSR2, &sa, NULL) == -1)
+	if (sigaction(SIGUSR1, &sa, NULL) == -1
+		|| sigaction(SIGUSR2, &sa, NULL) == -1)
 		error_handler("Sigaction error", NULL);
 	while (1)
 	{

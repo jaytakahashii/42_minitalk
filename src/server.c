@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:22:14 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 15:11:24 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 17:06:48 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ int	main(int ac, char **av)
 	if (sigaction(SIGUSR2, &sa, NULL) == -1)
 		error_handler("Sigaction error", "SIGUSR2");
 	while (1)
+	{
 		pause();
+		usleep(50);
+	}
 	return (0);
 }

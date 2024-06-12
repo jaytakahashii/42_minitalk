@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:22:14 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 19:18:45 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 19:20:24 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	signal_handler(int signal, siginfo_t *info, void *context)
 		write(1, &c, 1);
 		bit = 0;
 		c = 0;
-		kill(info->si_pid, SIGUSR1);
+		kill(info->si_pid, signal);
 	}
 	(void)context;
 }

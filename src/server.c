@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:22:14 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 17:06:48 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 17:31:12 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	signal_handler(int signal)
 
 int	main(int ac, char **av)
 {
-	struct sigaction	sa;
+	t_sa	sa;
 
 	(void)av;
 	if (ac != 1)

@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jay <jay@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:22:14 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/09 21:35:30 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 10:35:10 by jay              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minitalk.h"
+
 #include <stdio.h>
-#include <signal.h> /* signal.hをインクルード */
-#include <stdlib.h>
-#include <string.h>
 
 int count;
 
@@ -44,7 +43,7 @@ int main(void){
     while(count < 50){
     }
 
-    puts("Count Over.");
+    printf("over");
 
-    return 0;
+    return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:22:14 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 14:14:02 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:15:44 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ int	main(int ac, char **av)
 	ft_printf("Server PID: %d\n", getpid());
 	sa.sa_handler = signal_handler;
 	sa.sa_flags = 0;
+	if (sigaction(SIGUSR1, &sa, NULL) == -1)
+		error_handler("Sigaction error", "SIGUSR1");
+	if (sigaction(SIGUSR2, &sa, NULL) == -1)
+		error_handler("Sigaction error", "SIGUSR2");
 	while (1)
-	{
-		sigaction(SIGUSR1, &sa, NULL);
-		sigaction(SIGUSR2, &sa, NULL);
 		pause();
-	}
 	(void)av;
 	return (0);
 }

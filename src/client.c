@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 19:49:01 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 14:07:04 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:30:00 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,19 @@ void	send_message(int pid, char c)
 int	main(int ac, char **av)
 {
 	int	pid;
-	int	i;
+	int	index;
 
 	if (ac != 3)
 		error_handler("Invalid arguments", "Usage: ./client [PID] [message]");
-	i = 0;
-	pid = ft_atoi(av[1]);
-	while (av[2][i])
+	index = 0;
+	if (!bool_atoi(av[1], &pid))
+		error_handler("Invalid PID", "PID must be a positive integer");
+	if (pid <= 0)
+		error_handler("Invalid PID", "PID must be a positive integer");
+	while (av[2][index])
 	{
-		send_message(pid, av[2][i]);
-		i++;
+		send_message(pid, av[2][index]);
+		index++;
 	}
 	send_message(pid, '\n');
 	return (0);

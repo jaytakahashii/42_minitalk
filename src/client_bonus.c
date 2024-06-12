@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 19:49:01 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 19:02:05 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 19:16:58 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	signal_handler(int signal)
 {
 	if (signal == SIGUSR1)
-		write(1, "SIGUSR1\n", 8);
+		write(1, "SIGUSR\n", 8);
 	else if (signal == SIGUSR2)
-		write(1, "SIGUSR2\n", 8);
+		write(1, "SIGUSR\n", 8);
 }
 
 void	send_message(int pid, char c)
@@ -63,10 +63,7 @@ int	main(int ac, char **av)
 	sa.sa_flags = 0;
 	index = 0;
 	while (av[2][index])
-	{
-		send_message(pid, av[2][index]);
-		index++;
-	}
+		send_message(pid, av[2][index++]);
 	send_message(pid, '\n');
 	return (0);
 }

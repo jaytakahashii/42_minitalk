@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:22:14 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 19:14:42 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 19:18:45 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,9 @@ int	main(int ac, char **av)
 	ft_printf("Server PID: %d\n", getpid());
 	sa.sa_sigaction = signal_handler;
 	sigemptyset(&sa.sa_mask);
-	if (sigaddset(&sa.sa_mask, SIGUSR1) == -1)
-		error_handler("Sigaddset error", "SIGUSR1");
-	if (sigaddset(&sa.sa_mask, SIGUSR2) == -1)
-		error_handler("Sigaddset error", "SIGUSR2");
+	if (sigaddset(&sa.sa_mask, SIGUSR1) == -1
+		|| sigaddset(&sa.sa_mask, SIGUSR2) == -1)
+		error_handler("Sigaddset error", NULL);
 	sa.sa_flags = 0;
 	if (sigaction(SIGUSR1, &sa, NULL) == -1
 		|| sigaction(SIGUSR2, &sa, NULL) == -1)

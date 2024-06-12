@@ -16,7 +16,8 @@ STDLIB_DIR	= stdlib/
 STDLIB_SRC	=	ft_atoi.c\
 				ft_calloc.c\
 				ft_itoa.c\
-				ft_abs.c
+				ft_abs.c\
+				bool_atoi.c
 
 CTYPE_DIR	= ctype/
 CTYPE_SRC	=	ft_isalnum.c\

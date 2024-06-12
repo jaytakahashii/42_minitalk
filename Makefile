@@ -52,7 +52,7 @@ $(SERVER): $(OBJ_DIR) $(SERVER_OBJS)
 
 $(CLIENT): $(OBJ_DIR) $(CLIENT_OBJS)
 	@echo $(B) "$(CLIENT) creating\n" $(X)
-	$(CC) $(CFLAGS) $(CLIENT_OBJS) $(LIBFT_DIR)$(LIBFT_NAME) -o $(CLIENT)
+	@$(CC) $(CFLAGS) $(CLIENT_OBJS) $(LIBFT_DIR)$(LIBFT_NAME) -o $(CLIENT)
 	@echo $(G) "!! $(SERVER) created !!" $(X)
 
 $(OBJ_DIR):

@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 20:13:09 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/09 18:39:09 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 14:38:19 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdint.h>
 # include <limits.h>
+# include <stdbool.h>
 
 # include "ft_printf.h"
 
@@ -68,6 +69,7 @@ int		ft_abs(int nbr);
 int		ft_atoi(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_itoa(int n);
+bool	bool_atoi(char *str, int *nbr);
 // str
 size_t	ft_strlcpy(char *dst, const char *src, size_t n);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);

@@ -16,7 +16,8 @@ STDLIB_DIR	= stdlib/
 STDLIB_SRC	=	ft_atoi.c\
 				ft_calloc.c\
 				ft_itoa.c\
-				ft_abs.c
+				ft_abs.c\
+				bool_atoi.c
 
 CTYPE_DIR	= ctype/
 CTYPE_SRC	=	ft_isalnum.c\
@@ -79,6 +80,7 @@ LIBFT_SRC	+= $(addprefix $(MEM_DIR), $(MEM_SRC))
 LIBFT_SRC	+= $(addprefix $(STR_DIR), $(STR_SRC))
 LIBFT_SRC	+= $(addprefix $(FD_DIR), $(FD_SRC))
 LIBFT_SRC	+= $(addprefix $(LST_DIR), $(LST_SRC))
+LIBFT_SRC	+= $(addprefix $(ERROR_DIR), $(ERROR_SRC))
 
 GNL_DIR		= gnl/
 GNL_SRC		= get_next_line.c        get_next_line_utils.c
@@ -106,7 +108,7 @@ CUT 		= "\033[K"
 all: ${NAME}
 
 ${NAME}: $(OBJ_DIR) ${OBJS}
-	@echo $(Y) "successfully compiled\n" $(X)
+	@echo $(Y) "$(NAME) successfully compiled\n" $(X)
 	@echo $(B) "$(NAME) archiving\n" $(X)
 	@$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 	@echo $(G) "!! $(NAME) created !!" $(X)
@@ -126,17 +128,18 @@ $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)$(LIBFT_DIR)$(STR_DIR)
 	@mkdir $(OBJ_DIR)$(LIBFT_DIR)$(FD_DIR)
 	@mkdir $(OBJ_DIR)$(LIBFT_DIR)$(LST_DIR)
+	@mkdir $(OBJ_DIR)$(LIBFT_DIR)$(ERROR_DIR)
 	@mkdir $(OBJ_DIR)$(GNL_DIR)
 	@mkdir $(OBJ_DIR)$(FTPRINTF_DIR)
 
 clean:
-	@echo $(R) "cleaning \n" $(X)
-	${RM} ${OBJ_DIR}
+	@${RM} ${OBJ_DIR}
+	@echo $(R) "$(NAME) cleaned\n" $(X)
 
 fclean:
-	@echo $(R) "fcleaning \n" $(X)
 	@${RM} ${OBJ_DIR}
 	@${RM} ${NAME}
+	@echo $(R) "$(NAME) fcleaned\n" $(X)
 
 re: fclean all
 

@@ -1,5 +1,6 @@
-NAME =
-NAME_LINUX =
+NAME = minitalk
+SERVER = server
+CLIENT = client
 LIBFT_NAME = libft
 LIBFT_DIR = libft/
 INCLUDE_DIR = include/
@@ -9,19 +10,26 @@ SRC_DIR = src/
 OBJ_DIR = .obj/
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-MLX_MAC_FLAGS = -l mlx -framework OpenGL -framework AppKit
-MLX_LINUX_FLAGS = -lmlx_Linux -lXext -lX11
 AR = ar
 ARFLAGS = rcs
 RM = rm -rf
 NORM = norminette
 
-SRC_FILES = main.c
+SERVER_SRC_FILES = server.c
 
-OBJ_FILES = $(SRC_FILES:%.c=%.o)
+CLIENT_SRC_FILES = client.c
 
-SRCS += $(addprefix $(SRC_DIR), $(SRC_FILES))
-OBJS += $(addprefix $(OBJ_DIR), $(OBJ_FILES))
+SERVER_OBJ_FILES = $(SERVER_SRC_FILES:%.c=%.o)
+
+CLIENT_OBJ_FILES = $(CLIENT_SRC_FILES:%.c=%.o)
+
+SERVER_SRCS = $(addprefix $(SRC_DIR), $(SERVER_SRC_FILES))
+
+CLIENT_SRCS = $(addprefix $(SRC_DIR), $(CLIENT_SRC_FILES))
+
+SERVER_OBJS = $(addprefix $(OBJ_DIR), $(SERVER_OBJ_FILES))
+
+CLIENT_OBJS = $(addprefix $(OBJ_DIR), $(CLIENT_OBJ_FILES))
 
 Y 			= "\033[33m"
 R 			= "\033[31m"
@@ -31,57 +39,48 @@ X 			= "\033[0m"
 UP 			= "\033[A"
 CUT 		= "\033[K"
 
-all: $(NAME)
+all: $(SERVER) $(CLIENT)
 
-linux: $(NAME_LINUX)
-
-$(NAME): $(OBJ_DIR) $(OBJS)
-	@echo "\n"
+$(SERVER): $(OBJ_DIR) $(SERVER_OBJS)
+	@echo $(Y) "$(NAME) successfully compiled\n" $(X)
 	@echo $(B) "--> Into $(LIBFT_DIR)" $(X)
 	@$(MAKE) -C $(LIBFT_DIR)
-	@echo $(B) "*** $(NAME) creating ***" $(X)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_DIR)$(LIBFT_NAME) $(MLX_MAC_FLAGS) -o $(NAME)
-	@echo "\n"
-	@echo $(G) "!!!!!!! $(NAME) created success !!!!!!!" $(X)
+	@echo $(B) "<-- Out of $(LIBFT_DIR)\n" $(X)
+	@echo $(B) "$(SERVER) creating" $(X)
+	@$(CC) $(CFLAGS) $(SERVER_OBJS) $(LIBFT_DIR)$(LIBFT_NAME) -o $(SERVER)
+	@echo $(G) "!! $(SERVER) created !!" $(X)
 
-$(NAME_LINUX): $(OBJ_DIR) $(OBJS)
-	@echo "\n"
-	@echo $(B) "--> Into $(LIBFT_DIR)" $(X)
-	@$(MAKE) -C $(LIBFT_DIR)
-	@echo $(B) "*** $(NAME_LINUX) creating ***" $(X)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_DIR)$(LIBFT_NAME) $(MLX_LINUX_FLAGS) -o $(NAME_LINUX)
-	@echo "\n"
-	@echo $(G) "!!!!!!! $(NAME_LINUX) created success !!!!!!!" $(X)
+$(CLIENT): $(OBJ_DIR) $(CLIENT_OBJS)
+	@echo $(B) "$(CLIENT) creating\n" $(X)
+	@$(CC) $(CFLAGS) $(CLIENT_OBJS) $(LIBFT_DIR)$(LIBFT_NAME) -o $(CLIENT)
+	@echo $(G) "!! $(SERVER) created !!" $(X)
 
 $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@echo $(B) "Compiling $< into $@" $(X)
-	$(CC) $(CFLAGS) $(INCLUDE) $(LIBFT_INCLUDE) -c $< -o $@
+	@echo $(B) "Compiling $<" $(X)
+	@$(CC) $(CFLAGS) $(INCLUDE) $(LIBFT_INCLUDE) -c $< -o $@
+	@printf $(UP)$(CUT)
 
 clean:
 	@$(MAKE) -C $(LIBFT_DIR) clean
-	@echo $(R) "<< $(NAME) cleaning>>" $(X)
-	$(RM) $(OBJ_DIR)
-	@echo "\n"
+	@$(RM) $(OBJ_DIR)
+	@echo $(R) "$(NAME) cleaned\n" $(X)
 
 fclean:
 	@$(MAKE) -C $(LIBFT_DIR) fclean
-	@echo $(R) "<< $(NAME) fcleaning >>" $(X)
-	$(RM) $(OBJ_DIR)
-	$(RM) $(NAME) $(NAME_LINUX)
-	@echo "\n"
+	@$(RM) $(OBJ_DIR)
+	@$(RM) $(NAME) $(NAME_LINUX)
+	@echo $(R) "$(NAME) fcleaned\n" $(X)
 
 re: fclean all
 
-relinux: fclean linux
-
 norm:
 	@echo $(R) "<<< $(NAME) error count >>>" $(X)
-	@norminette $(SRC_DIR) $(INCLUDE_DIR) | grep Error | wc -l
+	@norminette $(SRC_DIR) $(INCLUDE_DIR) | grep Error | grep -v Error! | wc -l
 	@norminette $(SRC_DIR) $(INCLUDE_DIR) | grep Error || true
-	@echo "\n"
 	@$(MAKE) -C $(LIBFT_DIR) norm
 
-.PHONY: all clean fclean re norm linux relinux
+.PHONY: all clean fclean re norm
+# .PHONY: all clean fclean re norm linux relinux

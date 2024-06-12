@@ -6,7 +6,7 @@
 /*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 19:49:01 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 19:16:58 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 19:22:09 by jtakahas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ int	main(int ac, char **av)
 	while (av[2][index])
 		send_message(pid, av[2][index++]);
 	send_message(pid, '\n');
+	usleep(50);
 	return (0);
 }

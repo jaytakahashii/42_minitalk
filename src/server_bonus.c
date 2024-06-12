@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jay <jay@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 15:22:14 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 19:20:24 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 20:50:07 by jay              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ int	main(int ac, char **av)
 	if (sigaddset(&sa.sa_mask, SIGUSR1) == -1
 		|| sigaddset(&sa.sa_mask, SIGUSR2) == -1)
 		error_handler("Sigaddset error", NULL);
-	sa.sa_flags = 0;
 	if (sigaction(SIGUSR1, &sa, NULL) == -1
 		|| sigaction(SIGUSR2, &sa, NULL) == -1)
 		error_handler("Sigaction error", NULL);
+	sa.sa_flags = 0;
 	while (1)
 	{
 		pause();

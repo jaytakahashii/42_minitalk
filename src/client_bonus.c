@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jay <jay@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 19:49:01 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 19:28:56 by jtakahas         ###   ########.fr       */
+/*   Updated: 2024/06/12 20:52:50 by jay              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	signal_handler(int signal)
 {
-	if (signal == SIGUSR1)
-		write(1, "SIGUSR\n", 8);
-	else if (signal == SIGUSR2)
-		write(1, "SIGUSR\n", 8);
+	if (signal == SIGUSR1 || signal == SIGUSR2)
+		write(1, "SIGUSR!!\n", 9);
 }
 
 void	send_message(int pid, char c)

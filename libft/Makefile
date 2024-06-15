@@ -110,11 +110,13 @@ all: ${NAME}
 ${NAME}: $(OBJ_DIR) ${OBJS}
 	@echo $(Y) "$(NAME) successfully compiled\n" $(X)
 	@echo $(B) "$(NAME) archiving\n" $(X)
+	@printf $(UP)$(CUT)
+	@printf $(UP)$(CUT)
 	@$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 	@echo $(G) "!! $(NAME) created !!" $(X)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	@echo $(Y) "compiling $< " $(X)
+	@echo $(Y) "Compiling $< " $(X)
 	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 	@printf $(UP)$(CUT)
 

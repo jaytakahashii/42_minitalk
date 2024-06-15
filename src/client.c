@@ -6,7 +6,7 @@
 /*   By: jay <jay@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 19:49:01 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/12 20:50:46 by jay              ###   ########.fr       */
+/*   Updated: 2024/06/15 20:53:14 by jay              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	send_message(int pid, char c)
 			if (kill(pid, SIGUSR2) == -1)
 				error_handler("Kill error", "SIGUSR2");
 		}
-		usleep(50);
+		usleep(WAIT_TIME);
 		bit++;
 	}
 }

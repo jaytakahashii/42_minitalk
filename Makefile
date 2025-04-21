@@ -1,20 +1,28 @@
+MAKEFILE = Makefile
+
 NAME = minitalk
+
 BONUS_NAME = minitalk_bonus
+
 SERVER = server
 CLIENT = client
+
 SERVER_BONUS = server_bonus
 CLIENT_BONUS = client_bonus
-LIBFT_NAME = libft
+
+LIBFT_NAME = libft.a
 LIBFT_DIR = libft/
+
 INCLUDE_DIR = include/
 INCLUDE = -I $(INCLUDE_DIR)
 LIBFT_INCLUDE = -I $(LIBFT_DIR)$(INCLUDE_DIR)
+
 SRC_DIR = src/
 OBJ_DIR = .obj/
+
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-AR = ar
-ARFLAGS = rcs
+
 RM = rm -rf
 NORM = norminette
 

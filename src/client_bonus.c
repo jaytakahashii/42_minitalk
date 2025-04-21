@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtakahas <jtakahas@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jay <jay@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 19:49:01 by jtakahas          #+#    #+#             */
-/*   Updated: 2024/06/16 16:23:06 by jtakahas         ###   ########.fr       */
+/*   Updated: 2025/04/21 15:31:40 by jay              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	send_message(int pid, char c)
 		if ((c & (1 << bit)) != 0)
 		{
 			if (kill(pid, SIGUSR1) == -1)
-				error_handler("Kill error", "SIGUSR1");
+				error_exit("Kill error", "SIGUSR1");
 		}
 		else
 		{
 			if (kill(pid, SIGUSR2) == -1)
-				error_handler("Kill error", "SIGUSR2");
+				error_exit("Kill error", "SIGUSR2");
 		}
 		usleep(WAIT_TIME);
 		bit++;
@@ -47,19 +47,19 @@ int	main(int ac, char **av)
 	int		index;
 
 	if (ac != 3)
-		error_handler("Invalid arguments", "Usage: ./client [PID] [message]");
+		error_exit("Invalid arguments", "Usage: ./client [PID] [message]");
 	if (!bool_atoi(av[1], &pid))
-		error_handler("Invalid PID", "PID must be a positive integer");
+		error_exit("Invalid PID", "PID must be a positive integer");
 	if (pid <= 0)
-		error_handler("Invalid PID", "PID must be a positive integer");
+		error_exit("Invalid PID", "PID must be a positive integer");
 	sa.sa_handler = signal_handler;
 	sigemptyset(&sa.sa_mask);
 	if (sigaddset(&sa.sa_mask, SIGUSR1) == -1
 		|| sigaddset(&sa.sa_mask, SIGUSR2) == -1)
-		error_handler("Sigaddset error", NULL);
+		error_exit("Sigaddset error", NULL);
 	if (sigaction(SIGUSR1, &sa, NULL) == -1
 		|| sigaction(SIGUSR2, &sa, NULL) == -1)
-		error_handler("Sigaction error", NULL);
+		error_exit("Sigaction error", NULL);
 	sa.sa_flags = 0;
 	index = 0;
 	while (av[2][index])

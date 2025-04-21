@@ -7,10 +7,10 @@
 </p>
 
 # 💡 About the project
-> The purpose of this project is to code a small data exchange program using UNIX signals. (Reference: 42Tokyo minitake project PDF)
+> The purpose of this project is to code a small data exchange program using UNIX signals. (Reference: 42Tokyo minitalk project PDF)
 
 ## Overview
-Minitake is a project from the 42 curriculum that involves implementing inter-process communication (IPC) using UNIX signals.
+minitalk is a project from the 42 curriculum that involves implementing inter-process communication (IPC) using UNIX signals.
 The objective is to gain a deeper understanding of how signals work in UNIX systems and to develop skills in managing and utilizing signals for IPC.
 This project provides an opportunity to explore various aspects of signal handling, data transmission, and bitwise operations.
 
@@ -28,7 +28,7 @@ This project provides an opportunity to explore various aspects of signal handli
 - **Data Reconstruction**: Develop techniques to accurately reconstruct data sent via signals from bitwise representation.
 
 # 🚀 Algorithm
-The communication between processes in the Minitake project is achieved using UNIX signals (SIGUSR1 and SIGUSR2) to send and receive data. Here is a simplified explanation of the algorithm:
+The communication between processes in the minitalk project is achieved using UNIX signals (SIGUSR1 and SIGUSR2) to send and receive data. Here is a simplified explanation of the algorithm:
 
 1. **Client Side**:
    - Convert each character of the message into its binary representation.
